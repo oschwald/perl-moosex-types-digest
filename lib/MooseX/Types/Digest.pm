@@ -9,7 +9,7 @@ MooseX::Types::Digest - Digest datatypes for Moose
 
 =cut
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 =head1 SYNOPSIS
 
@@ -17,7 +17,7 @@ our $VERSION = '0.02';
 
  use Moose;
  use Moose::Util::TypeConstraints;
- use MooseX::Types::Digest qw( MD5 SHA1 );
+ use MooseX::Types::Digest qw( MD5 SHA1 SHA224 SHA256 SHA384 SHA512 );
 
  has md5  => ( is => 'rw', isa => MD5  );
  has sha1 => ( is => 'rw', isa => SHA1 );

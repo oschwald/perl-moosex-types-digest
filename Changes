@@ -1,4 +1,10 @@
 Revision history for MooseX::Types::Digest;
 
+0.03   2009-10-27
+       - updated pod and changlog for 0.02
+
+0.02   2009-10-27
+       - added SHA formats 224, 256, 384 and 512 (patch from Stevan Little)
+
 0.01   2009-10-25
        - Initial release

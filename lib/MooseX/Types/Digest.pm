@@ -9,7 +9,7 @@ MooseX::Types::Digest - Digest datatypes for Moose
 
 =cut
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 =head1 SYNOPSIS
 
@@ -18,7 +18,7 @@ our $VERSION = '0.01';
  use Moose;
  use Moose::Util::TypeConstraints;
  use MooseX::Types::Digest qw( MD5 SHA1 );
-    
+
  has md5  => ( is => 'rw', isa => MD5  );
  has sha1 => ( is => 'rw', isa => SHA1 );
 
@@ -37,7 +37,7 @@ A Str that looks like a valid SHA1 hexdigest.
 =back
 =cut
 
-use MooseX::Types -declare => [qw/ MD5 SHA1 /];
+use MooseX::Types -declare => [qw/ MD5 SHA1 SHA224 SHA256 SHA384 SHA512 /];
 use Moose::Util::TypeConstraints;
 
 subtype MD5,
@@ -50,9 +50,30 @@ subtype SHA1,
   where { (m/^[0-9a-f]{40}$/i) },
   message {"Must be 40 chars, and contain only [0-9a-f]" };
 
-=head1 AUTHOR
+subtype SHA224,
+  as "Str",
+  where { (m/^[0-9a-f]{56}$/i) },
+  message {"Must be 56 chars, and contain only [0-9a-f]" };
 
-Michael Langner, C<< <mila at cpan.org> >>
+subtype SHA256,
+  as "Str",
+  where { (m/^[0-9a-f]{64}$/i) },
+  message {"Must be 64 chars, and contain only [0-9a-f]" };
+
+subtype SHA384,
+  as "Str",
+  where { (m/^[0-9a-f]{96}$/i) },
+  message {"Must be 96 chars, and contain only [0-9a-f]" };
+
+subtype SHA512,
+  as "Str",
+  where { (m/^[0-9a-f]{128}$/i) },
+  message {"Must be 128 chars, and contain only [0-9a-f]" };
+
+=head1 AUTHORS
+
+ Michael Langner, C<< <mila at cpan.org> >>
+ Stevan Little, C<< <stevan.little at iinteractive.com> >>
 
 =head1 BUGS
 

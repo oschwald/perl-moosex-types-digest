@@ -1,5 +1,8 @@
 Revision history for MooseX::Types::Digest;
 
+0.0301 2014-01-05
+       - convert distribution to use Dist::Zilla, no functional changes
+
 0.03   2009-10-27
        - updated pod and changlog for 0.02
 

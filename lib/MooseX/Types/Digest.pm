@@ -7,10 +7,6 @@ use warnings;
 
 MooseX::Types::Digest - Digest datatypes for Moose
 
-=cut
-
-our $VERSION = '0.03';
-
 =head1 SYNOPSIS
 
  package Foo;

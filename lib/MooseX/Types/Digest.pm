@@ -13,12 +13,12 @@ MooseX::Types::Digest - Digest datatypes for Moose
 
  use Moose;
  use Moose::Util::TypeConstraints;
- use MooseX::Types::Digest qw( MD5 SHA1 SHA224 SHA256 SHA384 SHA512 );
+ use MooseX::Types::Digest qw( MD5 SHA1 SHA224 SHA256 SHA384 SHA512 SHA3_224, SHA3_256, SHA3_384 and SHA3_512 );
 
  has md5  => ( is => 'rw', isa => MD5  );
  has sha1 => ( is => 'rw', isa => SHA1 );
 
-Some string type constraints that match commonly used hexdigests. See L<Digest::MD5> or L<Digest::SHA1>.
+Some string type constraints that match commonly used hexdigests. See L<Digest::MD5>, L<Digest::SHA1> or L<Digest::SHA3>.
 
 =over
 
@@ -33,7 +33,7 @@ A Str that looks like a valid SHA1 hexdigest.
 =back
 =cut
 
-use MooseX::Types -declare => [qw/ MD5 SHA1 SHA224 SHA256 SHA384 SHA512 /];
+use MooseX::Types -declare => [qw/ MD5 SHA1 SHA224 SHA256 SHA384 SHA512 SHA3_224 SHA3_256 SHA3_384 SHA3_512 /];
 use Moose::Util::TypeConstraints;
 
 subtype MD5,
@@ -66,6 +66,30 @@ subtype SHA512,
   where { (m/^[0-9a-f]{128}$/i) },
   message {"Must be 128 chars, and contain only [0-9a-f]" };
 
+#3333333333333333333333333333333333333333
+
+subtype SHA3_224,
+  as "Str",
+  where { (m/^[0-9a-f]{56}$/i) },
+  message {"Must be 56 chars, and contain only [0-9a-f]" };
+
+subtype SHA3_256,
+  as "Str",
+  where { (m/^[0-9a-f]{64}$/i) },
+  message {"Must be 64 chars, and contain only [0-9a-f]" };
+
+subtype SHA3_384,
+  as "Str",
+  where { (m/^[0-9a-f]{96}$/i) },
+  message {"Must be 96 chars, and contain only [0-9a-f]" };
+
+subtype SHA3_512,
+  as "Str",
+  where { (m/^[0-9a-f]{128}$/i) },
+  message {"Must be 128 chars, and contain only [0-9a-f]" };
+
+#3333333333333333333333333333333333333    
+
 =head1 AUTHORS
 
  Michael Langner, C<< <mila at cpan.org> >>
@@ -82,7 +106,7 @@ your bug as I make changes.
 
 =head1 COPYRIGHT & LICENSE
 
-Copyright 2009 Michael Langner, all rights reserved.
+Copyright 2014 Michael Langner, all rights reserved.
 
 This program is free software; you can redistribute it and/or modify it under the
 same terms as Perl itself.

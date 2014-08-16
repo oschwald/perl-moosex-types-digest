@@ -1,5 +1,8 @@
 Revision history for MooseX::Types::Digest;
 
+0.04   2014-08-16
+       - added SHA3 formats SHA3_224, SHA3_256, SHA3_384 and SHA3_512
+       
 0.0301 2014-01-05
        - convert distribution to use Dist::Zilla, no functional changes
 

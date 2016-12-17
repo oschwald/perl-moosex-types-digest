@@ -39,56 +39,126 @@ use Moose::Util::TypeConstraints;
 subtype MD5,
   as "Str",
   where { (m/^[0-9a-f]{32}$/i) },
-  message {"Must be 32 chars, and contain only [0-9a-f]" };
+  message {"Must be 32 chars, and contain only [0-9a-f]" },
+  ( $Moose::VERSION >= 2.0200
+      ? inline_as {
+          $_[0]->parent()->_inline_check( $_[1] ) . ' && '
+              . qq{ $_[1] =~ m/^[0-9a-f]{32}\$/i };
+      }
+      : ()
+  );
 
 subtype SHA1,
   as "Str",
   where { (m/^[0-9a-f]{40}$/i) },
-  message {"Must be 40 chars, and contain only [0-9a-f]" };
+  message {"Must be 40 chars, and contain only [0-9a-f]" },
+  ( $Moose::VERSION >= 2.0200
+      ? inline_as {
+          $_[0]->parent()->_inline_check( $_[1] ) . ' && '
+              . qq{ $_[1] =~ m/^[0-9a-f]{40}\$/i };
+      }
+      : ()
+  );
 
 subtype SHA224,
   as "Str",
   where { (m/^[0-9a-f]{56}$/i) },
-  message {"Must be 56 chars, and contain only [0-9a-f]" };
+  message {"Must be 56 chars, and contain only [0-9a-f]" },
+  ( $Moose::VERSION >= 2.0200
+      ? inline_as {
+          $_[0]->parent()->_inline_check( $_[1] ) . ' && '
+              . qq{ $_[1] =~ m/^[0-9a-f]{56}\$/i };
+      }
+      : ()
+  );
 
 subtype SHA256,
   as "Str",
   where { (m/^[0-9a-f]{64}$/i) },
-  message {"Must be 64 chars, and contain only [0-9a-f]" };
+  message {"Must be 64 chars, and contain only [0-9a-f]" },
+  ( $Moose::VERSION >= 2.0200
+      ? inline_as {
+          $_[0]->parent()->_inline_check( $_[1] ) . ' && '
+              . qq{ $_[1] =~ m/^[0-9a-f]{64}\$/i };
+      }
+      : ()
+  );
 
 subtype SHA384,
   as "Str",
   where { (m/^[0-9a-f]{96}$/i) },
-  message {"Must be 96 chars, and contain only [0-9a-f]" };
+  message {"Must be 96 chars, and contain only [0-9a-f]" },
+  ( $Moose::VERSION >= 2.0200
+      ? inline_as {
+          $_[0]->parent()->_inline_check( $_[1] ) . ' && '
+              . qq{ $_[1] =~ m/^[0-9a-f]{96}\$/i };
+      }
+      : ()
+  );
 
 subtype SHA512,
   as "Str",
   where { (m/^[0-9a-f]{128}$/i) },
-  message {"Must be 128 chars, and contain only [0-9a-f]" };
+  message {"Must be 128 chars, and contain only [0-9a-f]" },
+  ( $Moose::VERSION >= 2.0200
+      ? inline_as {
+          $_[0]->parent()->_inline_check( $_[1] ) . ' && '
+              . qq{ $_[1] =~ m/^[0-9a-f]{128}\$/i };
+      }
+      : ()
+  );
 
 #3333333333333333333333333333333333333333
 
 subtype SHA3_224,
   as "Str",
   where { (m/^[0-9a-f]{56}$/i) },
-  message {"Must be 56 chars, and contain only [0-9a-f]" };
+  message {"Must be 56 chars, and contain only [0-9a-f]" },
+  ( $Moose::VERSION >= 2.0200
+      ? inline_as {
+          $_[0]->parent()->_inline_check( $_[1] ) . ' && '
+              . qq{ $_[1] =~ m/^[0-9a-f]{56}\$/i };
+      }
+      : ()
+  );
 
 subtype SHA3_256,
   as "Str",
   where { (m/^[0-9a-f]{64}$/i) },
-  message {"Must be 64 chars, and contain only [0-9a-f]" };
+  message {"Must be 64 chars, and contain only [0-9a-f]" },
+  ( $Moose::VERSION >= 2.0200
+      ? inline_as {
+          $_[0]->parent()->_inline_check( $_[1] ) . ' && '
+              . qq{ $_[1] =~ m/^[0-9a-f]{64}\$/i };
+      }
+      : ()
+  );
 
 subtype SHA3_384,
   as "Str",
   where { (m/^[0-9a-f]{96}$/i) },
-  message {"Must be 96 chars, and contain only [0-9a-f]" };
+  message {"Must be 96 chars, and contain only [0-9a-f]" },
+  ( $Moose::VERSION >= 2.0200
+      ? inline_as {
+          $_[0]->parent()->_inline_check( $_[1] ) . ' && '
+              . qq{ $_[1] =~ m/^[0-9a-f]{96}\$/i };
+      }
+      : ()
+  );
 
 subtype SHA3_512,
   as "Str",
   where { (m/^[0-9a-f]{128}$/i) },
-  message {"Must be 128 chars, and contain only [0-9a-f]" };
+  message {"Must be 128 chars, and contain only [0-9a-f]" },
+  ( $Moose::VERSION >= 2.0200
+      ? inline_as {
+          $_[0]->parent()->_inline_check( $_[1] ) . ' && '
+              . qq{ $_[1] =~ m/^[0-9a-f]{128}\$/i };
+      }
+      : ()
+  );
 
-#3333333333333333333333333333333333333    
+#3333333333333333333333333333333333333
 
 =head1 AUTHORS
 
